@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerShared", "TaskManagerShared\TaskManagerShared.csproj", "{999595F0-E57C-4F5F-9297-AE1D70A7B055}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerShared", "TaskManagerShared\TaskManagerShared.csproj", "{999595F0-E57C-4F5F-9297-AE1D70A7B055}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Backend", "TaskManager.Backend\TaskManager.Backend.csproj", "{A23E1564-A655-4885-A020-96B1A302ED9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Backend", "TaskManager.Backend\TaskManager.Backend.csproj", "{A23E1564-A655-4885-A020-96B1A302ED9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Fronend", "TaskManager.Fronend\TaskManager.Fronend.csproj", "{9156FE64-FE30-42FE-8284-AA786BD0D17A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Fronend", "TaskManager.Fronend\TaskManager.Fronend.csproj", "{9156FE64-FE30-42FE-8284-AA786BD0D17A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
