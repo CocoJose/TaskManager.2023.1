@@ -5,7 +5,7 @@
 
 @if (Tasks == null)
 {
-    <p>Cargando...</p>
+    <p>Loading...</p>
 }
 else
 {
@@ -24,7 +24,7 @@ else
             {
                 <tr>
                     <td>@task.Description</td>
-                    <td>@task.Date</td>
+                    <td>@($"{task.Date: yyyy/MM/dd}")</td>
                     <td>@task.IsCompleted</td>
                     <td>
                         <a href="/task/edit/@task.Id" class="btn btn-warning">Edit</a>

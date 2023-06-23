@@ -1,8 +1,57 @@
-﻿@page "/task/edit/{Id}"
+﻿@page "/task/edit/{Id:int}"
+@inject IRepository repository
+@inject SweetAlertService sweetAlertService
+@inject NavigationManager navigationManager
 
 <h3>TaskEdit</h3>
+@if (myTask is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <TaskForm MyTask="myTask" OnValidSubmit="SaveAsync" ReturnAction="Return" />
+}
+
 
 @code {
+    private MyTask? myTask;
+
     [Parameter]
     public int Id { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        var responseHttp = await repository.GetAsync<MyTask>($"api/MyTasks/{Id}");
+        if (!responseHttp.IsSuccess)
+        {
+            await sweetAlertService.FireAsync("Error", responseHttp.Message, SweetAlertIcon.Error);
+            return;
+        }
+        myTask = responseHttp.Result;
+    }
+
+    private async Task SaveAsync()
+    {
+        var responseHttp = await repository.PutAsync("/api/MyTasks/", myTask);
+        if (!responseHttp.IsSuccess)
+        {
+            await sweetAlertService.FireAsync("Error", responseHttp.Message, SweetAlertIcon.Error);
+            return;
+        }
+        Return();
+        var toast = sweetAlertService.Mixin(new SweetAlertOptions
+            {
+                Toast = true,
+                Position = SweetAlertPosition.BottomEnd,
+                ShowCloseButton = true,
+                Timer = 3000
+            });
+        await toast.FireAsync(icon: SweetAlertIcon.Info, message: "Tasks updated successfully.");
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/tasks");
+    }
 }
